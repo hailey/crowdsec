@@ -1,0 +1,14 @@
+onsuccess: next_stage
+name: haileyxb/freeswitch
+description: "Parse Freeswitch logs"
+filter: "evt.Parsed.program == 'freeswitch'"
+grok:
+  pattern: "%{TIMESTAMP_ISO8601:time}  [WARNING]sofia_reg.c:1739 SIP auth failure (REGISTER) on sofia profile 'internal' for \\[%{DATA:user}@107.170.213.226\\] from ip {IP:source_ip}"
+  apply_on: message
+statics:
+  - meta: log_type
+    value: freeswitch_failed_auth
+  - meta: source_ip
+    expression: "evt.Parsed.source_ip"
+  - meta: user
+    expression: "evt.Parsed.user

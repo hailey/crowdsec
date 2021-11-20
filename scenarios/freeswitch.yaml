@@ -1,0 +1,14 @@
+# freeswitch bruteforce
+type: leaky
+debug: true
+name: haileyxb/freeswitch
+description: "Detect freeswitch bruteforce"
+filter: evt.Meta.log_type == 'freeswitch_failed_auth'
+leakspeed: "5m"
+capacity: 5
+groupby: evt.Meta.source_ip
+blackhole: 10m
+labels:
+ service: freeswitch
+ type: bruteforce
+ remediation: true
