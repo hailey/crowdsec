@@ -11,4 +11,4 @@ statics:
   - meta: source_ip
     expression: "evt.Parsed.source_ip"
   - meta: user
-    expression: "evt.Parsed.user
+    expression: "evt.Parsed.user"
