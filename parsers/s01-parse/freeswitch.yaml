@@ -8,8 +8,8 @@ pattern_syntax:
   FS_EXTENSION: '\[[0-9a-zA-Z]+@[0-9a-zA-Z.]+\]'
 nodes:
   - grok:
-      pattern: "^%{FS_TIMESTAMP:timestamp} \[WARNING\]sofia_reg.c:1739 SIP auth failure (REGISTER) on sofia profile \'internal\' for %{FS_EXTENSION:fs_exten} from ip %{IP:source_ip}$"
-      apply_on: message
+      pattern: ^%{FS_TIMESTAMP} \[WARNING\]sofia_reg.c:1739 SIP auth failure (REGISTER) on sofia profile \'internal\' for %{FS_EXTENSION:fs_exten} from ip %{IP:source_ip}$
+      apply_on: Line.Raw
 statics:
   - meta: log_type
     value: freeswitch_failed_auth
