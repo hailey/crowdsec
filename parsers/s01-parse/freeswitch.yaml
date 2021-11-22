@@ -11,7 +11,7 @@ nodes:
       pattern: ^%{FS_TIMESTAMP:timestamp} \[WARNING\]sofia_reg.c:1739 SIP auth failure (REGISTER) on sofia profile 'internal' for %{FS_EXTENSION:fs_exten} from ip %{IP:source_ip}$
       apply_on: message
   - grok:
-      pattern: ^%{FS_TIMESTAMP:timestamp} \[WARNING\]sofia_reg.c:2930 Can't find user %{FS_EXTENSION:fs_exten} from %{IP:source_ip}$
+      pattern: ^%{FS_TIMESTAMP:timestamp} \[WARNING\]sofia_reg.c:2930 Can\'t find user %{FS_EXTENSION:fs_exten} from %{IP:source_ip}$
       apply_on: message
 statics:
   - meta: log_type
