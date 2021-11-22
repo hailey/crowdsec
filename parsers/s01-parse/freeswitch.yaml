@@ -5,9 +5,13 @@ description: "Parse Freeswitch logs"
 filter: evt.Parsed.program == 'freeswitch'
 pattern_syntax:
   FS_TIMESTAMP: '202[1-2]-[0-1][0-9]-[0-1]\d \d\d:\d\d:\d\d.\d+'
-  FS_EXTENSION: '\[[0-9a-zA-Z]+@107.170.213.226\]'
+  FS_EXTENSION: '\[[0-9a-zA-Z]+@[0-9a-zA-Z.]+\]'
 grok:
   pattern: ^%{FS_TIMESTAMP:timestamp} \[WARNING\]sofia_reg.c:1739 SIP auth failure (REGISTER) on sofia profile 'internal' for %{FS_EXTENSION:fs_exten} from ip %{IP:source_ip}$
+  apply_on: message
+grok:
+  #2021-11-11 05:41:54.105330 [WARNING] sofia_reg.c:2930 Can't find user [4010@thevoices.faith] from 45.134.144.46
+  pattern: ^%{FS_TIMESTAMP:timestamp} \[WARNING\]sofia_reg.c:2930 Can't find user %{FS_EXTENSION:fs_exten} from %{IP:source_ip}$
   apply_on: message
 statics:
   - meta: log_type
