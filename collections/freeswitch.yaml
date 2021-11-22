@@ -1,10 +1,9 @@
 parsers:
   - haileyxb/freeswitch
 scenarios:
-  - haileyxb/freeswitch
+  - haileyxb/freeswitch-bf
 description: "freeswitch support : logs and brute-force scenarios"
 author: haileyxb
 tags:
   - linux
   - freeswitch
-  - bruteforce

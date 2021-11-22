@@ -11,4 +11,4 @@ blackhole: 10m
 labels:
  service: freeswitch
  type: bruteforce
- remediation: true
+ remediation: false
