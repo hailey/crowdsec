@@ -4,7 +4,7 @@ name: haileyxb/freeswitch
 description: "Parse Freeswitch logs"
 filter: evt.Parsed.program == 'freeswitch'
 pattern_syntax:
-  FS_TIMESTAMP: '202[12]-[01][0-9]-[01]\d \d\d:\d\d:\d\d.\d+'
+  FS_TIMESTAMP: '202[1-2]-[0-1][0-9]-[0-1]\d \d\d:\d\d:\d\d.\d+'
   FS_EXTENSION: '\[[0-9a-zA-Z]+@107.170.213.226\]'
 grok:
   pattern: ^%{FS_TIMESTAMP:timestamp} \[WARNING\]sofia_reg.c:1739 SIP auth failure (REGISTER) on sofia profile 'internal' for %{FS_EXTENSION:fs_exten} from ip %{IP:source_ip}$
