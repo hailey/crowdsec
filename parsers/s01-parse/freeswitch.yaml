@@ -5,7 +5,7 @@ description: "Parse Freeswitch logs"
 filter: evt.Parsed.program == 'freeswitch'
 pattern_syntax:
   FS_TIMESTAMP: '\d{4}-\d{2}-\d{2} \d\d:\d\d:\d\d.\d{6}'
-  FS_EXTENSION: '\[[0-9a-zA-Z]+@[0-9a-zA-Z.]+\]'
+  FS_EXTENSION: '\[[%0-9a-zA-Z]+@[0-9a-zA-Z.]+\]'
 nodes:
   - grok:
       pattern: ^%{FS_TIMESTAMP:timestamp} \[WARNING\] sofia_reg.c:1739 SIP auth failure \(REGISTER\) on sofia profile \'internal\' for %{FS_EXTENSION:fs_exten} from ip %{IP:source_ip}$
