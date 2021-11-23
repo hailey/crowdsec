@@ -4,7 +4,7 @@ debug: true
 name: haileyxb/freeswitch-bf
 description: "Detect freeswitch bruteforce"
 filter: evt.Meta.log_type == 'freeswitch_failed_auth'
-leakspeed: "5m"
+leakspeed: 15m
 capacity: 4
 groupby: evt.Meta.source_ip
 blackhole: 10m

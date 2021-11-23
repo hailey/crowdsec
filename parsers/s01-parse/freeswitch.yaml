@@ -10,6 +10,10 @@ nodes:
   - grok:
       pattern: ^%{FS_TIMESTAMP:timestamp} \[WARNING\] sofia_reg.c:1739 SIP auth failure \(REGISTER\) on sofia profile \'internal\' for %{FS_EXTENSION:fs_exten} from ip %{IP:source_ip}$
       apply_on: Line.Raw
+    onsuccess: next_stage
+  - grok:
+      pattern: ^%{FS_TIMESTAMP} \[WARNING\] sofia_reg.c:2930 Can\'t find user %{FS_EXTENSION:fs_exten} from %{IP:source_ip}$
+    onsuccess: next_stage
 statics:
   - meta: log_type
     value: freeswitch_failed_auth
